@@ -2,7 +2,6 @@
 [![GitHub stars](https://img.shields.io/github/stars/Shonsama/RATVS-ROS-Topic-Unified-Visualization-System.svg)](https://github.com/Shonsama/RATVS-ROS-Topic-Unified-Visualization-System/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![ROS version](https://img.shields.io/badge/ROS-Kinetic-blue.svg)](http://wiki.ros.org/kinetic)
-[![Go Report Card](https://goreportcard.com/badge/github.com/Shonsama/RATVS-ROS-Topic-Unified-Visualization-System)](https://goreportcard.com/report/github.com/Shonsama/RATVS-ROS-Topic-Unified-Visualization-System)
 
 
 The ROS Topic Unified Visualization System (RTUVS) is designed to provide unified access to topic information from multiple Robot Operating System (ROS) instances. 
