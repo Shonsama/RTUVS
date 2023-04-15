@@ -6,4 +6,20 @@
 
 The ROS Topic Unified Visualization System (RTUVS) is designed to provide unified access to topic information from multiple Robot Operating System (ROS) instances. 
 
-Using the IP address and topic name, RTUVS allows users to subscribe to topic information and transmit it to a self-built MQTT broker for centralized management. The topic information can be displayed in real-time on a web-based user interface, enabling users to easily monitor and visualize data from multiple ROS instances. RTUVS is an efficient and user-friendly solution for managing ROS topic information across multiple systems.
+Using the IP address and topic name, RTUVS allows users to subscribe to topic information and transmit it to a MQTT broker for centralized management. The topic information can be displayed in real-time on a web-based user interface, enabling users to easily monitor and visualize data from multiple ROS instances. RTUVS is an efficient and user-friendly solution for managing ROS topic information across multiple systems.
+Project Objective Plan Execution Status:
+
+Phase 1 Goals: April
+
+ - [] Build the frontend framework - Next.js
+ - [] Add ROS node - frontend
+ - [] Add dashboard - frontend
+ - [] Build the backend web - Gin/Redis
+ - [] Complete API - node crud
+ - [] Complete API - dashboard crud
+ - [] Save results via MQTT publish
+
+Phase 2 Goals: May
+
+ - [] Add tenant control
+ - [] Automate ROS node connection to MQTT Broker service
