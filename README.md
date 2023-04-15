@@ -11,15 +11,15 @@ Project Objective Plan Execution Status:
 
 Phase 1 Goals: April
 
- - [] Build the frontend framework - Next.js
- - [] Add ROS node - frontend
- - [] Add dashboard - frontend
- - [] Build the backend web - Gin/Redis
- - [] Complete API - node crud
- - [] Complete API - dashboard crud
- - [] Save results via MQTT publish
+ -[] Build the frontend framework - Next.js
+ -[] Add ROS node - frontend
+ -[] Add dashboard - frontend
+ -[] Build the backend web - Gin/Redis
+ -[] Complete API - node crud
+ -[] Complete API - dashboard crud
+ -[] Save results via MQTT publish
 
 Phase 2 Goals: May
 
- - [] Add tenant control
- - [] Automate ROS node connection to MQTT Broker service
+ -[] Add tenant control
+ -[] Automate ROS node connection to MQTT Broker service
