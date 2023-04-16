@@ -12,7 +12,7 @@ Project Objective Plan Execution Status:
 ### V0: April
 | Todo codes   | Status |
 | ------|------|
-|Build the frontend framework - Next.js| |
+|Build the frontend framework - Next.js| ✅|
 |Add ROS node - frontend| |
 |Add dashboard - frontend| |
 |Build the backend web - Gin/Redis| |

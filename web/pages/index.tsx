@@ -1,11 +1,12 @@
 import { Inter } from 'next/font/google'
+import ContentPage from './_content';
 import Card from './_card'
 import LeftBar from './_leftbar'
 import { useState, useEffect } from 'react';
 import  {ROSNode} from './api/types'
 
 export default function Home() {
-  const [nodes, setNodes] = useState<ROSNode[]>([{name:'ros',id:'1'}]);
+  const [nodes, setNodes] = useState<ROSNode[]>([{name:'ros',id:'1'},{name:'ros',id:'2'},{name:'ros',id:'3'},{name:'ros',id:'4'},{name:'ros',id:'5'},{name:'ros',id:'6'}]);
 
   useEffect(() => {
   }, []);
@@ -15,21 +16,12 @@ export default function Home() {
         nodes={nodes}
         cur='1'
       />
-      <div className="px-6 mb-6 mt-6">
-        <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-          <Card
-            title="Welcome"
-            content={
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel
-                urna sed est posuere ultrices in id libero. Nam aliquet sapien
-                tortor, vel maximus mi sagittis vitae.
-              </p>
-            }
-          />
-        </div>
-      </div>
-      
+      <div className="flex-grow">
+        <ContentPage
+          node={nodes[0]} 
+          topics={[]}
+        />
+      </div>    
     </main>
   )
 }

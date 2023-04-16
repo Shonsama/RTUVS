@@ -1,14 +1,14 @@
+import { ROSNode } from './api/types';
 interface CardProps {
-  title: string;
-  content: React.ReactNode;
+  node: ROSNode;
 }
 
-const Card: React.FC<CardProps> = ({ title, content }) => {
+const Card: React.FC<CardProps> = ({ node }) => {
     return (
-      <div className="group rounded-lg border px-5 py-4 transition-colors border-gray-300 bg-gray-100 bg-opacity-30">
+      <div className="group w-72 mr-8 mb-8 rounded-lg border px-3 py-2 transition-colors border-gray-300 bg-gray-100 bg-opacity-30">
         <div className="px-3 py-2">
-          <h2 className="mb-3 text-2xl font-semibold">{title}</h2>
-          <div className="mt-2 text-gray-600">{content}</div>
+          <h2 className="mb-3 text-2xl font-semibold">{node.name}</h2>
+          
         </div>
       </div>
     );
