@@ -19,9 +19,9 @@ Project Objective Plan Execution Status:
 |Complete API - node crud| |
 |Complete API - dashboard crud| |
 |Save results via MQTT publish| |
+|RTC Video Stream| |
 
 Phase 2 V1 May
 | Todo codes   | Status |
 | ------|------|
 |Add tenant control||
-|Automate ROS node connection to MQTT Broker service||
