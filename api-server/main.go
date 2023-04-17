@@ -1,19 +1,39 @@
 package main
 
 import (
-	"log"
-
-	"github.com/gin-gonic/gin"
+	"github.com/shonsama/RATVS-ROS-Topic-Unified-Visualization-System/api-server/bootstrap"
+	"github.com/shonsama/RATVS-ROS-Topic-Unified-Visualization-System/api-server/global"
 )
 
 func main() {
+	// 初始化配置
+	bootstrap.InitializeConfig()
 
-	// 创建HTTP服务器
-	r := gin.Default()
+	// 初始化日志
+	global.App.Log = bootstrap.InitializeLog()
 
-	// 启动HTTP服务器
-	err := r.Run(":8080")
-	if err != nil {
-		log.Fatal(err)
-	}
+	// 初始化数据库
+	global.App.DB = bootstrap.InitializeDB()
+	// 程序关闭前，释放数据库连接
+	defer func() {
+		if global.App.DB != nil {
+			db, _ := global.App.DB.DB()
+			db.Close()
+		}
+	}()
+
+	// 初始化验证器
+	bootstrap.InitializeValidator()
+
+	// 初始化Redis
+	global.App.Redis = bootstrap.InitializeRedis()
+
+	// 初始化文件系统
+	bootstrap.InitializeStorage()
+
+	// 初始化计划任务
+	bootstrap.InitializeCron()
+
+	// 启动服务器
+	bootstrap.RunServer()
 }

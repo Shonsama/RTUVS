@@ -9,6 +9,26 @@ The ROS Topic Unified Visualization System (RTUVS) is designed to provide unifie
 Using the IP address and topic name, RTUVS allows users to subscribe to topic information and transmit it to a MQTT broker for centralized management. The topic information can be displayed in real-time on a web-based user interface, enabling users to easily monitor and visualize data from multiple ROS instances. RTUVS is an efficient and user-friendly solution for managing ROS topic information across multiple systems.
 Project Objective Plan Execution Status:
 
+## API
+
+/getAllNodes GET
+
+/createNode POST req: Node
+
+/editNode POST req: Node
+
+/deleteNode DELETE
+
+/getTopicsByNodeName GET req: name
+
+/createTopic POST req: Topic
+
+/deleteTopic DELETE
+
+/rtspToWeb ws
+
+/topicInfo ws
+
 ## Todo
 
 ### V0: April
@@ -16,7 +36,7 @@ Project Objective Plan Execution Status:
 - ✅ Build the frontend framework - Next.js
 - ✅ Add ROS node - frontend
 - ✅ Add dashboard - frontend
-- 🚧 Build the backend web - Gin/Redis
+- ✅ Build the backend web - Gin/Redis
 - 🚧 Complete API - node crud
 - 📝 Complete API - dashboard crud
 - 📝 Integrate and test
