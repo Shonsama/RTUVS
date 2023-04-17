@@ -19,6 +19,7 @@ Project Objective Plan Execution Status:
 - 🚧 Build the backend web - Gin/Redis
 - 🚧 Complete API - node crud
 - 📝 Complete API - dashboard crud
+- 📝 Integrate and test
 
 ### V1: May
 
