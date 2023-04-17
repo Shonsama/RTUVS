@@ -21,3 +21,7 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.ant-btn-primary{
+  background-color: #1677ff !important; 
+}

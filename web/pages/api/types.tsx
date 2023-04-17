@@ -8,4 +8,5 @@ export type Topic = {
 export type ROSNode = {
     id: string;
     name: string;
+    ip: string;
 };
