@@ -37,8 +37,8 @@ Project Objective Plan Execution Status:
 - ✅ Add ROS node - frontend
 - ✅ Add dashboard - frontend
 - ✅ Build the backend web - Gin/Redis
-- 🚧 Complete API - node crud
-- 📝 Complete API - dashboard crud
+- ✅ Complete API - node crud
+- ✅ Complete API - dashboard crud
 - 📝 Integrate and test
 
 ### V1: May
