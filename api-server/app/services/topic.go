@@ -38,7 +38,7 @@ func (topicService *topicService) RetrieveAllTopics() ([]models.Topic, error) {
 // RetrieveTopicByID returns a ROS node from the database by ID
 func (topicService *topicService) RetrieveTopicByID(id string) (models.Topic, error) {
 	var topic models.Topic
-	err := global.App.DB.Where("id = ?", id).First(&topic).Error
+	err := global.App.DB.Where("rosNodeID = ?", id).First(&topic).Error
 	if err != nil {
 		return models.Topic{}, err
 	}

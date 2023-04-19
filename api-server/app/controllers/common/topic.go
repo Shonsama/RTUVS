@@ -31,7 +31,7 @@ func RetrieveAllTopics(c *gin.Context) {
 }
 
 func RetrieveTopicByID(c *gin.Context) {
-	id := c.Param("id")
+	id := c.Param("rosNodeID")
 	topic, err := services.TopicService.RetrieveTopicByID(id)
 	if err != nil {
 		response.BusinessFail(c, err.Error())

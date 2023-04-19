@@ -9,10 +9,16 @@ import (
 )
 
 func SetApiGroupRoutes(router *gin.RouterGroup) {
-	router.POST("/auth/register", app.Register)
-	router.POST("/auth/login", app.Login)
+	
+	router.GET("/getAllNodes", common.RetrieveAllROSNodes)
+	router.POST("/createNode", common.CreateROSNode)
+	router.POST("/editNode", common.EditROSNode)
+	router.DELETE("/deleteNode", common.DeleteROSNode)
+	router.GET("/getTopicsByNodeID", common.RetrieveTopicByID)
+	router.POST("/createTopic", common.CreateTopic)
+	router.DELETE("/deleteTopic", common.DeleteTopic)
 
-	authRouter := router.Group("").Use(middleware.JWTAuth(services.AppGuardName))
+	authRouter := router.Group("/auth").Use(middleware.JWTAuth(services.AppGuardName))
 	{
 		authRouter.POST("/auth/info", app.Info)
 		authRouter.POST("/auth/logout", app.Logout)
