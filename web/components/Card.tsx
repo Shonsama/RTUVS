@@ -1,5 +1,5 @@
 import { DeleteFilled } from '@ant-design/icons';
-import { Topic } from './api/types';
+import { Topic } from '../api/types';
 import { Button, Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 interface DataType {
@@ -28,7 +28,7 @@ const TopicCard: React.FC<CardProps> = ({ topic }) => {
         )
       }else if(topic.type=='table'){
         return (
-          <video src={topic.content} controls/>
+          <video src={topic.content} controls />
         )
       }else{
         return (
@@ -48,9 +48,8 @@ const TopicCard: React.FC<CardProps> = ({ topic }) => {
               type='link'
             />
           </div>
-          
-            {contentByTypes()}
-          </div>
+          {contentByTypes()}
+        </div>
       </div>
     );
   };

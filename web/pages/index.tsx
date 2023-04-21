@@ -1,7 +1,7 @@
-import ContentPage from './_content';
-import LeftBar from './_leftbar'
+import ContentPage from '../components/Content';
+import LeftBar from '../components/Leftbar'
 import { useState, useEffect } from 'react';
-import { ROSNode, Topic} from './api/types'
+import { ROSNode, Topic} from '../api/types'
 
 export default function Home() {
   const [nodes, setNodes] = useState<ROSNode[]>([

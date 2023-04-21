@@ -1,5 +1,5 @@
 import { Button, Form, Input, Modal } from 'antd';
-import { ROSNode } from './api/types';
+import { ROSNode } from '../api/types';
 import { useState } from 'react';
 
 type LeftBarProps = {

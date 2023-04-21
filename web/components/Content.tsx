@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { ROSNode, Topic } from './api/types';
+import { ROSNode, Topic } from '../api/types';
 import { Button, Form, Input, Modal, Select } from 'antd';
 import { EditFilled } from '@ant-design/icons';
-import TopicCard from './_card'
+import TopicCard from './Card'
 
 type ContentProps = {
   node: ROSNode;
