@@ -36,13 +36,13 @@ func (topicService *topicService) RetrieveAllTopics() ([]models.Topic, error) {
 }
 
 // RetrieveTopicByID returns a ROS node from the database by ID
-func (topicService *topicService) RetrieveTopicByID(id string) (models.Topic, error) {
-	var topic models.Topic
-	err := global.App.DB.Where("rosNodeID = ?", id).First(&topic).Error
+func (topicService *topicService) RetrieveTopicByID(rosNodeID string) ([]models.Topic, error) {
+	var topics []models.Topic
+	err := global.App.DB.Where("rosNodeID = ?", rosNodeID).Find(&topics).Error
 	if err != nil {
-		return models.Topic{}, err
+		return nil, err
 	}
-	return topic, nil
+	return topics, nil
 }
 
 // DeleteTopic deletes a ROS node from the database by ID
