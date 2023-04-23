@@ -31,6 +31,9 @@ Project Objective Plan Execution Status:
 
 ## Todo
 
+✅ Done
+🚧 Processing
+📝 Plan
 ### V0: April
 
 - ✅ Build the frontend framework - Next.js
@@ -40,7 +43,7 @@ Project Objective Plan Execution Status:
 - ✅ Complete API - node crud
 - ✅ Complete API - dashboard crud
 - ✅ TopicContent
-- 📝 Integrate
+- 🚧 Integrate
 - 📝 Test
 
 ### V1: May

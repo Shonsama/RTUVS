@@ -1,12 +1,12 @@
 export type Topic = {
-    id: string;
+    id?: string;
     name: string;
     type: string;
-    content: any;
+    content?: any;
 }
   
 export type ROSNode = {
-    id: string;
+    id?: string;
     name: string;
     ip: string;
 };

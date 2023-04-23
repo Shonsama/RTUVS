@@ -2,14 +2,16 @@ import { useState } from 'react';
 import { ROSNode, Topic } from '../api/types';
 import { Button, Form, Input, Modal, Select } from 'antd';
 import { EditFilled } from '@ant-design/icons';
+import { deleteNode, createTopic, editNode } from '@/api/api';
 import TopicCard from './Card'
 
 type ContentProps = {
   node: ROSNode;
   topics: Topic[];
+  callback: (node: ROSNode) => void;
 };
 
-const ContentPage: React.FC<ContentProps> = ({ node, topics }) => {
+const ContentPage: React.FC<ContentProps> = ({ node, topics, callback }) => {
   const [open, setOpen] = useState(false);
   const [openTopic, setOpenTopic] = useState(false);
 
@@ -32,7 +34,11 @@ const ContentPage: React.FC<ContentProps> = ({ node, topics }) => {
         okType: 'danger',
         cancelText: 'No',
         onOk() {
-          console.log('OK');
+          deleteNode(node.name).then(res => {
+            if(res.code === 200){
+              window.location.reload();
+            }
+          })
         },
         onCancel() {
           console.log('Cancel');
@@ -81,7 +87,7 @@ const ContentPage: React.FC<ContentProps> = ({ node, topics }) => {
       <div className="flex-grow p-6">
         <div className="grid grid-cols-2 gap-2">
           {topics.map((topic) => (
-            <TopicCard topic={topic} />
+            <TopicCard topic={topic} callback={callback} node={node} key={topic.id}/>
           ))}
         </div>
       </div>
@@ -91,11 +97,16 @@ const ContentPage: React.FC<ContentProps> = ({ node, topics }) => {
         centered
         open={open}
         onOk={() => {
-          setOpen(false);
           let req = {
+            id: node.id,
             name: form.getFieldValue('name'),
             ip: form.getFieldValue('ip')
           }
+          editNode(req).then(res => {
+            if(res.code === 200){
+              callback(res.data);
+            }
+          })
         }}
         onCancel={() => {
           setOpen(false);
@@ -128,16 +139,20 @@ const ContentPage: React.FC<ContentProps> = ({ node, topics }) => {
           </Form.Item>   
         </Form>
       </Modal>
-        <Modal
+      <Modal
           title="Topic"
           centered
           open={openTopic}
           onOk={() => {
-              setOpenTopic(false);
               let req = {
                 name: formTopic.getFieldValue('name'),
                 type: formTopic.getFieldValue('type')
               }
+              createTopic(req).then(res => {
+                if(res.code === 200){
+                  callback(res.data);
+                }
+              })
             }
           }
           onCancel={() => {
@@ -178,7 +193,7 @@ const ContentPage: React.FC<ContentProps> = ({ node, topics }) => {
               </Select>
             </Form.Item>   
           </Form>
-        </Modal>
+      </Modal>
     </div>
   );
 };

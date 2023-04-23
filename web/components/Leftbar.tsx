@@ -1,13 +1,15 @@
 import { Button, Form, Input, Modal } from 'antd';
 import { ROSNode } from '../api/types';
 import { useState } from 'react';
+import { createNode } from '@/api/api';
 
 type LeftBarProps = {
-  cur: string;
+  cur: ROSNode;
   nodes: ROSNode[];
+  callback: (node: ROSNode) => void;
 };
 
-const LeftBar: React.FC<LeftBarProps> = ({ cur, nodes }) => {
+const LeftBar: React.FC<LeftBarProps> = ({ cur, nodes, callback }) => {
   const [open, setOpen] = useState(false);
   const [form] = Form.useForm();
 
@@ -23,7 +25,7 @@ const LeftBar: React.FC<LeftBarProps> = ({ cur, nodes }) => {
           +
         </Button>
         {nodes.map((node) => {
-          if (node.id === cur) {
+          if (node.id === cur.id) {
             return (
               <div
                 key={node.id}
@@ -36,6 +38,7 @@ const LeftBar: React.FC<LeftBarProps> = ({ cur, nodes }) => {
             return (
               <div
                 key={node.id}
+                onClick={() => callback(node)}
                 className="w-full cursor-pointer text-center rounded-md mb-2 px-2 py-1 hover:bg-gray-300 focus:bg-gray-200"
               >
                 {node.name}
@@ -49,11 +52,16 @@ const LeftBar: React.FC<LeftBarProps> = ({ cur, nodes }) => {
         centered
         open={open}
         onOk={() => {
-          setOpen(false);
           let req = {
             name: form.getFieldValue('name'),
             ip: form.getFieldValue('ip')
           }
+          createNode(req).then(res => {
+            if (res.code === 200) {
+              setOpen(false);
+              form.resetFields();
+            }
+          })
         }}
         onCancel={() => {
           setOpen(false);
