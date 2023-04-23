@@ -21,6 +21,7 @@ func CreateTopic(c *gin.Context) {
 	}
 	response.Success(c, outPut)
 }
+
 func RetrieveAllTopics(c *gin.Context) {
 	topic, err := services.TopicService.RetrieveAllTopics()
 	if err != nil {
@@ -64,4 +65,14 @@ func EditTopic(c *gin.Context) {
 		return
 	}
 	response.Success(c, topic)
+}
+
+func RetrieveMessagesByTopicName(c *gin.Context) {
+	topicName := c.Param("topicName")
+	messages, err := services.TopicService.RetrieveMessagesByTopicName(topicName)
+	if err != nil {
+		response.BusinessFail(c, err.Error())
+		return
+	}
+	response.Success(c, messages)
 }
