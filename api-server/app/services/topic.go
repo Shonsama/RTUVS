@@ -1,6 +1,8 @@
 package services
 
 import (
+	"context"
+	"encoding/json"
 	"errors"
 
 	"github.com/shonsama/RATVS-ROS-Topic-Unified-Visualization-System/api-server/app/common/request"
@@ -12,6 +14,8 @@ type topicService struct {
 }
 
 var TopicService = new(topicService)
+
+const topicCacheKeyPre = "media:"
 
 // Create
 func (topicService *topicService) CreateTopic(params request.Topic) (topic models.Topic, err error) {
@@ -76,4 +80,30 @@ func (topicService *topicService) EditTopic(id string, params request.Topic) (mo
 	}
 
 	return topic, nil
+}
+
+func (topicService *topicService) RetrieveMessagesByTopicName(topicName string) ([]models.Message, error) {
+	// 通过 Redis 客户端获取指定 Topic 对应的所有 Message
+	cacheKey := topicCacheKeyPre + topicName
+	values, err := global.App.Redis.LRange(context.Background(), cacheKey, 0, -1).Result()
+	if err != nil {
+		// 处理 Redis 错误
+		return nil, err
+	}
+
+	messages := make([]models.Message, len(values))
+
+	for i, value := range values {
+		// 将 value 解析为 Message 对象
+		message := models.Message{}
+		err = json.Unmarshal([]byte(value), &message)
+		if err != nil {
+			// 处理 JSON 解析错误
+			return nil, err
+		}
+		messages[i] = message
+	}
+
+	return messages, nil
+
 }

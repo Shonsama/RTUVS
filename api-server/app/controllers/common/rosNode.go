@@ -21,6 +21,7 @@ func CreateROSNode(c *gin.Context) {
 	}
 	response.Success(c, outPut)
 }
+
 func RetrieveAllROSNodes(c *gin.Context) {
 	rosNodes, err := services.ROSNodeService.RetrieveAllROSNodes()
 	if err != nil {
