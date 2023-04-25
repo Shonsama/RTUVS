@@ -31,7 +31,7 @@ const TopicCard: React.FC<CardProps> = ({ topic, callback, node }) => {
         )
       }else if(topic.type=='table'){
         return (
-          <video src={topic.content} controls />
+          <video src={topic.content} />
         )
       }else{
         return (
