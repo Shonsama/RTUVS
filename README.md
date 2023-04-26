@@ -1,6 +1,6 @@
-# RATVS-ROS-Topic-Unified-Visualization-System
+# RTUVS-ROSTopic Unified-Visualization-System
 
-[![GitHub stars](https://img.shields.io/github/stars/Shonsama/RATVS-ROS-Topic-Unified-Visualization-System.svg)](https://github.com/Shonsama/RATVS-ROS-Topic-Unified-Visualization-System/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/Shonsama/RTUVS.svg)](https://github.com/Shonsama/RTUVS/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![ROS version](https://img.shields.io/badge/ROS-Kinetic-blue.svg)](http://wiki.ros.org/kinetic)
 
