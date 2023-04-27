@@ -34,6 +34,7 @@ Project Objective Plan Execution Status:
 ✅ Done
 🚧 Processing
 📝 Plan
+
 ### V0: April
 
 - ✅ Build the frontend framework - Next.js

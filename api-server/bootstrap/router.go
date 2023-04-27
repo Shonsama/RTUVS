@@ -23,18 +23,18 @@ func setupRouter() *gin.Engine {
 	router.Use(gin.Logger(), middleware.CustomRecovery())
 
 	// 跨域处理
-	//router.Use(middleware.Cors())
+	router.Use(middleware.Cors())
 
 	// 前端项目静态资源
-	router.StaticFile("/", "./static/dist/index.html")
-	router.Static("/assets", "./static/dist/assets")
-	router.StaticFile("/favicon.ico", "./static/dist/favicon.ico")
+	// router.StaticFile("/", "./static/dist/index.html")
+	// router.Static("/assets", "./static/dist/assets")
+	// router.StaticFile("/favicon.ico", "./static/dist/favicon.ico")
 	// 其他静态资源
-	router.Static("/public", "./static")
-	router.Static("/storage", "./storage/app/public")
+	// router.Static("/public", "./static")
+	// router.Static("/storage", "./storage/app/public")
 
 	// 注册 api 分组路由
-	apiGroup := router.Group("/api")
+	apiGroup := router.Group("")
 	routes.SetApiGroupRoutes(apiGroup)
 
 	return router

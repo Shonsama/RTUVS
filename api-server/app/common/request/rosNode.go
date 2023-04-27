@@ -1,7 +1,7 @@
 package request
 
 type ROSNode struct {
-	ID   string `form:"id" json:"id"`
+	ID   uint   `form:"id" json:"id"`
 	Name string `form:"name" json:"name" binding:"required"`
 	IP   string `form:"ip" json:"ip" binding:"required"`
 }

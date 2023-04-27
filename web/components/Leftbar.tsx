@@ -57,8 +57,9 @@ const LeftBar: React.FC<LeftBarProps> = ({ cur, nodes, callback }) => {
             ip: form.getFieldValue('ip')
           }
           createNode(req).then(res => {
-            if (res.code === 200) {
+            if (res.message === 'ok') {
               setOpen(false);
+              callback(res.data);
               form.resetFields();
             }
           })

@@ -9,19 +9,22 @@ export default function Home() {
   const [topics, setTopics] = useState<Topic[]>([]);
   useEffect(() => {
     getAllNodes().then(res => {
-      setNodes(res);
-      setCur(res[0]);
+      setNodes(res.data);
+      setCur(res.data[0]);
     }).then(() => {
       getTopicsByNodeName(cur.name).then(res => {
-        setTopics(res);
+        setTopics(res.data);
       })
     })
   }, []);
 
   const setCurNode = (node: ROSNode) => {
+    getAllNodes().then(res => {
+      setNodes(res.data);
+    })
     setCur(node);
     getTopicsByNodeName(node.name).then(res => {
-      setTopics(res);
+      setTopics(res.data);
     })
   }
   return (

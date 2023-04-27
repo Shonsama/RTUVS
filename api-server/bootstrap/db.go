@@ -105,8 +105,8 @@ func getGormLogWriter() logger.Writer {
 // 数据库表初始化
 func initMySqlTables(db *gorm.DB) {
 	err := db.Set("gorm:table_options", "ENGINE=InnoDB CHARSET=utf8mb4").AutoMigrate(
-		models.User{},
-		models.Media{},
+		models.Topic{},
+		models.ROSNode{},
 	)
 	if err != nil {
 		global.App.Log.Error("migrate table failed", zap.Any("err", err))

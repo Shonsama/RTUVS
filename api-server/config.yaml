@@ -18,10 +18,10 @@ log:
 database:
   driver: 'mysql'
   host: '127.0.0.1'
-  port: 8306
-  database: 'go-test'
+  port: 3306
+  database: 'new_schema'
   username: 'root'
-  password: 'root'
+  password: 'Code@394890'
   charset: 'utf8mb4'
   max_idle_conns: 10
   max_open_conns: 100

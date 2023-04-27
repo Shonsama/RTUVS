@@ -34,8 +34,8 @@ const ContentPage: React.FC<ContentProps> = ({ node, topics, callback }) => {
         okType: 'danger',
         cancelText: 'No',
         onOk() {
-          deleteNode(node.name).then(res => {
-            if(res.code === 200){
+          deleteNode(node.id || '').then(res => {
+            if(res.message === 'ok'){
               window.location.reload();
             }
           })
@@ -103,7 +103,7 @@ const ContentPage: React.FC<ContentProps> = ({ node, topics, callback }) => {
             ip: form.getFieldValue('ip')
           }
           editNode(req).then(res => {
-            if(res.code === 200){
+            if(res.message === 'ok'){
               callback(res.data);
             }
           })
@@ -149,7 +149,7 @@ const ContentPage: React.FC<ContentProps> = ({ node, topics, callback }) => {
                 type: formTopic.getFieldValue('type')
               }
               createTopic(req).then(res => {
-                if(res.code === 200){
+                if(res.message === 'ok'){
                   callback(res.data);
                 }
               })
