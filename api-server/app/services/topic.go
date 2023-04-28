@@ -24,7 +24,9 @@ func (topicService *topicService) CreateTopic(params request.Topic) (topic model
 		err = errors.New("手机号已存在")
 		return
 	}
-	topic = models.Topic{Name: params.Name, Type: params.Type}
+	topic.Name = params.Name
+	topic.Type = params.Type
+	topic.ROSNodeID = params.ROSNodeID
 	err = global.App.DB.Create(&topic).Error
 	return
 }
@@ -42,7 +44,7 @@ func (topicService *topicService) RetrieveAllTopics() ([]models.Topic, error) {
 // RetrieveTopicByID returns a ROS node from the database by ID
 func (topicService *topicService) RetrieveTopicByID(rosNodeID string) ([]models.Topic, error) {
 	var topics []models.Topic
-	err := global.App.DB.Where("rosNodeID = ?", rosNodeID).Find(&topics).Error
+	err := global.App.DB.Where("ros_node_id = ?", rosNodeID).Find(&topics).Error
 	if err != nil {
 		return nil, err
 	}

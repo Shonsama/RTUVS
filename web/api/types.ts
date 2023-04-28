@@ -2,6 +2,7 @@ export type Topic = {
     id?: string;
     name: string;
     type: string;
+    rosNodeID: string;
     content?: any;
 }
   

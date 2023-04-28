@@ -2,7 +2,7 @@ import ContentPage from '../components/Content';
 import LeftBar from '../components/Leftbar'
 import { useState, useEffect } from 'react';
 import { ROSNode, Topic} from '../api/types'
-import { getAllNodes, getTopicsByNodeName } from '@/api/api';
+import { getAllNodes, getTopicsByNodeID } from '@/api/api';
 export default function Home() {
   const [nodes, setNodes] = useState<ROSNode[]>([]);
   const [cur, setCur] = useState<ROSNode>({name:'', id:'', ip: ''});
@@ -11,10 +11,13 @@ export default function Home() {
     getAllNodes().then(res => {
       setNodes(res.data);
       setCur(res.data[0]);
-    }).then(() => {
-      getTopicsByNodeName(cur.name).then(res => {
-        setTopics(res.data);
-      })
+      return res.data[0] || null; // 把 res.data[0] 作为下一个 Promise 的返回结果
+    }).then(curNode => {
+      if ( curNode && curNode.id !== '') {
+        getTopicsByNodeID(curNode.id).then(res => {
+          setTopics(res.data);
+        })
+      }
     })
   }, []);
 
@@ -23,7 +26,7 @@ export default function Home() {
       setNodes(res.data);
     })
     setCur(node);
-    getTopicsByNodeName(node.name).then(res => {
+    getTopicsByNodeID(node.id||'').then(res => {
       setTopics(res.data);
     })
   }

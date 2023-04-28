@@ -1,40 +1,40 @@
+import { getAllNodes } from '@/api/api';
 import { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
-type ChartProps = {
-    topicName: String;
-};
-const Chart: React.FC<ChartProps> = ({ topicName }) => {
-  const [dataList, setDataList] = useState([]);
+import { Chart, CategoryScale, registerables, ChartData } from 'chart.js';
+Chart.register(CategoryScale,...registerables);
 
-  // 发送请求获取数据
-  const fetchData = async () => {
-    const response = await fetch(`http://example.com/api/data/${topicName}`);
-    const data = await response.json();
-    setDataList(data);
-  };
+type ChartProps = {
+  topicName: string;
+};
+
+const ChartCard: React.FC<ChartProps> = ({ topicName }) => {
+  const [dataList, setDataList] = useState([{ time: '', value: 0 }]);
+  const [key, setKey] = useState(Date.now());
 
   // 初次渲染和每隔30秒更新数据
   useEffect(() => {
-    fetchData();
-    const intervalId = setInterval(fetchData, 30000);
+    const intervalId = setInterval(getAllNodes, 30000);
     return () => clearInterval(intervalId);
   }, []);
 
   // 构建图表数据
-  const chartData = {
-    labels: dataList.map(({ time }) => time),
+  const chartData: ChartData<'line', number[], string> = {
+    labels: dataList.map((item) => item.time),
     datasets: [
       {
-        label: 'Topic Data',
-        data: dataList.map(({ value }) => value),
-        borderColor: 'rgba(75,192,192,1)',
+        label: topicName,
+        data: dataList.map((item) => item.value),
         backgroundColor: 'rgba(75,192,192,0.4)',
+        borderColor: 'rgba(75,192,192,1)',
         borderWidth: 1,
       },
     ],
   };
-
-  return <Line data={chartData} />;
+  
+  return <Line
+            data={chartData}
+          />;
 };
 
-export default Chart;
+export default ChartCard;

@@ -8,9 +8,9 @@ import (
 func SetApiGroupRoutes(router *gin.RouterGroup) {
 	router.GET("/getAllNodes", common.RetrieveAllROSNodes)
 	router.POST("/createNode", common.CreateROSNode)
-	router.POST("/editNode", common.EditROSNode)
-	router.POST("/deleteNode", common.DeleteROSNode)
-	router.GET("/getTopicsByNodeID", common.RetrieveTopicByID)
+	router.POST("/editNode/:id", common.EditROSNode)
+	router.POST("/deleteNode/:id", common.DeleteROSNode)
+	router.GET("/getTopicsByNodeID/:rosNodeID", common.RetrieveTopicByID)
 	router.POST("/createTopic", common.CreateTopic)
-	router.POST("/deleteTopic", common.DeleteTopic)
+	router.POST("/deleteTopic/:id", common.DeleteTopic)
 }

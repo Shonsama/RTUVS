@@ -37,6 +37,11 @@ const ContentPage: React.FC<ContentProps> = ({ node, topics, callback }) => {
           deleteNode(node.id || '').then(res => {
             if(res.message === 'ok'){
               window.location.reload();
+            }else{
+              Modal.error({
+                title: 'Error',
+                content: res.message
+              });
             }
           })
         },
@@ -86,7 +91,7 @@ const ContentPage: React.FC<ContentProps> = ({ node, topics, callback }) => {
       </header>
       <div className="flex-grow p-6">
         <div className="grid grid-cols-2 gap-2">
-          {topics.map((topic) => (
+          {topics && topics.length > 0 && topics.map((topic) => (
             <TopicCard topic={topic} callback={callback} node={node} key={topic.id}/>
           ))}
         </div>
@@ -104,7 +109,14 @@ const ContentPage: React.FC<ContentProps> = ({ node, topics, callback }) => {
           }
           editNode(req).then(res => {
             if(res.message === 'ok'){
+              setOpen(false);
+              form.resetFields();
               callback(res.data);
+            }else{
+              Modal.error({
+                title: 'Error',
+                content: res.message
+              });
             }
           })
         }}
@@ -145,12 +157,20 @@ const ContentPage: React.FC<ContentProps> = ({ node, topics, callback }) => {
           open={openTopic}
           onOk={() => {
               let req = {
+                rosNodeID: node.id || '',
                 name: formTopic.getFieldValue('name'),
                 type: formTopic.getFieldValue('type')
               }
               createTopic(req).then(res => {
                 if(res.message === 'ok'){
-                  callback(res.data);
+                  callback(node);
+                  setOpenTopic(false);
+                  formTopic.resetFields();
+                }else{
+                  Modal.error({
+                    title: 'Error',
+                    content: res.message
+                  });
                 }
               })
             }
@@ -188,7 +208,7 @@ const ContentPage: React.FC<ContentProps> = ({ node, topics, callback }) => {
                 allowClear
                 style={{ width: '100%' }}
               >
-                <Select.Option value="table">Table</Select.Option>
+                <Select.Option value="chart">Chart</Select.Option>
                 <Select.Option value="video">Video</Select.Option>
               </Select>
             </Form.Item>   

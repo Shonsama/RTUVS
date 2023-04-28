@@ -18,7 +18,7 @@ export const createNode = (node: ROSNode) => {
 
 // 编辑节点
 export const editNode = (node: ROSNode) => {
-  return fetch(url + '/editNode', {
+  return fetch(`${url}/editNode/${node.id}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -29,7 +29,7 @@ export const editNode = (node: ROSNode) => {
 
 // 删除节点
 export const deleteNode = (id:String) => {
-  return fetch(`${url}/deleteNode?id=${id}`, {
+  return fetch(`${url}/deleteNode/${id}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -38,8 +38,8 @@ export const deleteNode = (id:String) => {
 }
 
 // 根据节点名称获取话题列表
-export const getTopicsByNodeName = (name:String) => {
-  return fetch(`${url}/getTopicsByNodeName?name=${name}`).then(response => response.json())
+export const getTopicsByNodeID = (id:String) => {
+  return fetch(`${url}/getTopicsByNodeID/${id}`).then(response => response.json())
 }
 
 // 创建话题
@@ -55,7 +55,7 @@ export const createTopic = (topic:Topic) => {
 
 // 删除话题
 export const deleteTopic = (id:String) => {
-  return fetch(`${url}/deleteTopic?id=${id}`, {
+  return fetch(`${url}/deleteTopic/${id}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

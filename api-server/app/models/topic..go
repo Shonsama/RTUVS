@@ -3,7 +3,7 @@ package models
 type Topic struct {
 	ID
 	Name      string    `json:"name" gorm:"not null;comment:Topic Name"`
-	ROSNodeID string    `json:"rosNodeID" gorm:"not null;comment:Topic ROS Node"`
+	ROSNodeID uint      `json:"rosNodeID" gorm:"not null;comment:Topic ROS Node"`
 	Type      string    `json:"type" gorm:"not null;comment:Topic Type 1table 2Video"`
 	Content   []Message `json:"content" gorm:"-"`
 }
