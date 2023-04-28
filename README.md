@@ -44,8 +44,8 @@ Project Objective Plan Execution Status:
 - ✅ Complete API - node crud
 - ✅ Complete API - dashboard crud
 - ✅ TopicContent
-- 🚧 Integrate
-- 📝 Test
+- ✅ Integrate
+- 🚧 Test
 
 ### V1: May
 
