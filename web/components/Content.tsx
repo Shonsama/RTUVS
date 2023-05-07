@@ -63,7 +63,7 @@ const ContentPage: React.FC<ContentProps> = ({ node, topics, callback }) => {
       <header className="p-4 border-b flex items-center justify-between">
         <div className='flex items-center space-x-2'>
           <h1 className="text-2xl font-bold">
-            Name: {node.name}
+            {node.name} - {node.ip}
           </h1>
           <Button  
               size='small'
@@ -73,6 +73,7 @@ const ContentPage: React.FC<ContentProps> = ({ node, topics, callback }) => {
               onClick={() => handleNodeClick('edit')}
             />
         </div>
+        
         <div className="flex space-x-2">
           
           <Button

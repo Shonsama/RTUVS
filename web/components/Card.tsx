@@ -14,11 +14,11 @@ const TopicCard: React.FC<CardProps> = ({ topic, callback, node }) => {
     const contentByTypes = () => {
       if(topic.type=='chart'){
         return (
-          <ChartCard topicName={topic.content} />
+          <ChartCard topicName={topic.name} />
         )
       }else if(topic.type=='video'){
         return (
-          <Stream topicName={topic.content} />
+          <img src={`http://${node.ip}:8080/stream?topic=${topic.name}`} />
         )
       }else{
         return (
