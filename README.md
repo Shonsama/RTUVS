@@ -45,9 +45,8 @@ Project Objective Plan Execution Status:
 - ✅ Complete API - dashboard crud
 - ✅ TopicContent
 - ✅ Integrate
-- 🚧 Test
+- ✅ Test
 
 ### V1: May
 
-- 📝 ROS Server
-- 📝 RTSP Server
+- ✅ ROS Server
